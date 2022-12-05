@@ -1,0 +1,121 @@
+.x-captcha-window {
+    width: 340px;
+    height: 420px;
+    position: fixed;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #888;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+    z-index: 9999;
+    border-radius: 4px;
+    border-top: 8px solid rgb(83, 129, 253);
+    flex-direction: column;
+    padding: 5px 20px 8px 20px;
+    box-sizing: border-box;
+}
+
+.x-captcha-window .xcaptcha-header {
+    width: 100%;
+
+}
+
+.x-captcha-window .xcaptcha-bottom {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+
+}
+
+.x-captcha-window .xcaptcha-content {
+    width: 100%;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+
+.x-captcha-window .xcaptcha-content img {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    -webkit-user-drag: none;
+    left:0;
+    top:0px;
+}
+
+.x-captcha-window .xcaptcha-content .tag {
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    position: absolute;
+    background-color: #539ffe;
+    border-radius: 50%;
+    text-align: center;
+    border: 3px solid white;
+    color: white;
+    transform: translate(-50%, -50%);
+    cursor: default;
+    user-select: none;
+    font-weight: 600;
+}
+
+.x-captcha-window .xcaptcha-but {
+    height: 20px;
+    width: 20px;
+    margin: 10px 8px;
+    background-repeat: no-repeat;
+    background-size: 345%;
+    cursor: pointer;
+    background-image: url(../asset/button.png);
+}
+
+.x-captcha-window .xcaptcha-left{
+    display: flex;
+    align-content: center;
+    height: 40px;
+}
+
+.x-captcha-window .xcaptcha-close {
+    background-position: 0px 0px;
+}
+
+.x-captcha-window .xcaptcha-close:hover {
+    background-position: 0px -26px;
+}
+
+.x-captcha-window .xcaptcha-about {
+    background-position: -49px 0px;
+}
+
+.x-captcha-window .xcaptcha-about:hover {
+    background-position: -49px -26px;
+}
+
+.x-captcha-window .xcaptcha-refresh {
+    background-position: -25px 0px;
+}
+
+.x-captcha-window .xcaptcha-refresh:hover {
+    background-position: -25px -26px;
+}
+
+.x-captcha-window .xcaptcha-right{
+    height: 80%;
+    width: 120px;
+    display: flex;
+}
+.x-captcha-window button{
+    background: #539ffe;
+    color: white;
+    border: 0px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 17px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+

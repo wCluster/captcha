@@ -1,0 +1,65 @@
+{
+  "name": "wzhcaptcha",
+  "version": "0.1.5",
+  "description ": "",
+  "main": "./dist/cjs/captcha.js",
+  "module": "./dist/esm/captcha.js",
+  "jsnext:main": "./dist/esm/captcha.js",
+  "umd": "./dist/umd/captcha.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.3",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "rm -rf ./dist && yarn run rollup -c"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@emotion/babel-preset-css-prop": "^11.10.0",
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "i": "^0.3.7",
+    "npm": "^9.1.3",
+    "postcss": "^8.4.19",
+    "postcss-url": "^10.1.3",
+    "rollup": "^3.5.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-ts": "^3.0.2"
+  },
+  "keywords": [],
+  "author": "wzhone",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
