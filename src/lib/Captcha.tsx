@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useEffect, useState } from 'react'
 import CaptchaWindow from './CaptchaWindow'
 import './Captcha.css'
 
 interface CaptchaProp {
-  height?: string
-  width?: string
-  color?: string
-  bgcolor?: string
-  apiServer: string
+  style?: CSSProperties
+  apiServer?: string
   token: string
+  onSuccess?: Function
+  onReset?: Function
 }
 
 const Captcha: React.FC<CaptchaProp> = ({
-  width,
-  height,
-  color,
-  bgcolor,
-  apiServer,
-  token
+  style,
+  apiServer = "https://api.wzh.one/captcha",
+  token,
+  onSuccess,
+  onReset
 }) => {
 
   const [state, setState] = useState(1)
   const [info, setInfo] = useState("点击验证")
   const [show, setVisible] = useState(false)
+
+  useEffect(()=>{
+    setInfo("点击验证");
+    setState(1)
+    setVisible(false)
+    onReset?.call(null)
+  },[token])
 
   useEffect(() => {
     switch (state) {
@@ -40,7 +45,11 @@ const Captcha: React.FC<CaptchaProp> = ({
         setInfo("正在刷新");
         break;
       case 4:
-        setInfo("验证成功");
+        const ret = onSuccess?.call(null)
+        if (typeof ret === "string")
+          setInfo(ret);
+        else
+          setInfo("验证成功");
         break;
     }
   }, [state])
@@ -53,14 +62,11 @@ const Captcha: React.FC<CaptchaProp> = ({
       }}
       className="x-captcha"
       style={{
-        width,
-        height,
-        color,
-        backgroundColor: bgcolor,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        ...style,
       }}>
       <span>{info}</span>
       <CaptchaWindow

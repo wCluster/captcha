@@ -60,6 +60,7 @@
     cursor: default;
     user-select: none;
     font-weight: 600;
+    box-sizing: content-box;
 }
 
 .x-captcha-window .xcaptcha-but {

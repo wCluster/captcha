@@ -1,6 +1,6 @@
 {
   "name": "wzhcaptcha",
-  "version": "0.1.5",
+  "version": "0.2.3",
   "description ": "",
   "main": "./dist/cjs/captcha.js",
   "module": "./dist/esm/captcha.js",

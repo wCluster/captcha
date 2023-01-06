@@ -8,7 +8,7 @@ interface CaptchaWindowProp {
     token: string
     show: boolean
     hideWindow: any
-    success :any
+    success: any
 }
 
 const CaptchaWindow: React.FC<CaptchaWindowProp> = ({
@@ -31,52 +31,55 @@ const CaptchaWindow: React.FC<CaptchaWindowProp> = ({
         }
     }, [token, rnd])
 
-    const refresh = useCallback(async()=>{
+    const refresh = useCallback(async () => {
         clean()
         const resp = await fetch(`${apiServer}/refresh/${token}`)
         const _ = await resp.json()
         setRnd(Math.random())
-    },[token])   
+    }, [token])
 
-    const clean = useCallback(async()=>{
+    const clean = useCallback(async () => {
         setTagList([])
-    },[token])   
+    }, [token])
 
-    const captchaClick = useCallback( (e : any)=>{
+    const captchaClick = useCallback((e: any) => {
         const x = e.pageX - e.target.getBoundingClientRect().left
         const y = e.pageY - e.target.getBoundingClientRect().top
-        const newList = [...tagList,[x,y]]
+        const newList = [...tagList, [x, y]]
         setTagList(newList)
-        
-    },[tagList])   
 
-    const tagClick = useCallback( (e : any)=>{
+    }, [tagList])
+
+    const tagClick = useCallback((e: any) => {
         const id = parseInt(e.target.innerHTML) - 1
-        const newList = tagList.slice(0,id)
+        const newList = tagList.slice(0, id)
         setTagList(newList)
-    },[tagList])   
+    }, [tagList])
 
-    const submit = useCallback(async()=>{
-        const resp = await fetch(`${apiServer}/check/${token}`,{
+    const submit = useCallback(async (e: any) => {
+
+        e.preventDefault()
+
+        const resp = await fetch(`${apiServer}/check/${token}`, {
             method: "POST",
             body: JSON.stringify({
-                data : tagList
+                data: tagList
             }),
-            headers:{
-                "Content-Type":"application/json"
+            headers: {
+                "Content-Type": "application/json"
             }
         })
         const data = await resp.json()
         clean()
-        if (data.detail == 'success'){
+        if (data.detail == 'success') {
             hideWindow()
             success()
-        }else{
+        } else {
             alert(data.detail)
             refresh()
-        }   
-        
-    },[tagList,token])
+        }
+
+    }, [tagList, token])
 
     return (
         <div
@@ -91,13 +94,13 @@ const CaptchaWindow: React.FC<CaptchaWindowProp> = ({
             <div className='xcaptcha-content'>
                 <img onClick={captchaClick} src={imgUrl}></img>
                 {
-                    tagList.map((i : any,index : number)=>{
-                        return <div 
-                            key={`${i[0]}-${i[1]}`} 
+                    tagList.map((i: any, index: number) => {
+                        return <div
+                            key={`${i[0]}-${i[1]}`}
                             className='tag'
-                            style={{ left:i[0],top:i[1] }}
+                            style={{ left: i[0], top: i[1] }}
                             onClick={tagClick}
-                            >
+                        >
                             {index + 1}
                         </div>
                     })
@@ -106,7 +109,7 @@ const CaptchaWindow: React.FC<CaptchaWindowProp> = ({
             <div className='xcaptcha-bottom'>
                 <div className='xcaptcha-left'>
                     <div className="xcaptcha-but xcaptcha-close"
-                        onClick={(e:any) => hideWindow(e)}
+                        onClick={(e: any) => hideWindow(e)}
                     ></div>
                     <div className="xcaptcha-but xcaptcha-about"></div>
                     <div className="xcaptcha-but xcaptcha-refresh"
